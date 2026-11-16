@@ -141,3 +141,13 @@
   --tint-strong: rgba(11, 30, 63, 0.09);
   --orange-ink: #B4490A;
 }
+
+/* ---------- Short desktop screens ----------
+   The one-screen pages are tested down to ~730px tall. A laptop at 125%
+   scaling with a browser toolbar and bookmarks bar leaves ~650px, where no
+   amount of squeezing fits. Below 760px they lay out at 760px instead - the
+   proportions that are known to work - and the panel scrolls the difference. */
+@media (min-width: 1100px) and (max-height: 759px) {
+  .shell__panel[data-fixed='true'] { overflow-y: auto; }
+  .shell__panel[data-fixed='true'] > * { min-height: 760px; }
+}

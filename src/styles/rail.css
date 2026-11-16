@@ -264,3 +264,14 @@
      the page keeps exactly one navigation surface. */
   .nav { display: none; }
 }
+
+/* Short desktop screens: a smaller photo and tighter nav so the whole rail
+   fits, and room at the bottom so the fixed accessibility button never sits
+   on top of a nav link when the rail does scroll. */
+@media (min-width: 1100px) and (max-height: 759px) {
+  .rail { padding-bottom: 92px; }
+  .rail__avatar { width: clamp(96px, 16vh, 124px); }
+  .rail__link { height: 40px; }
+  .rail__actions { margin-top: 12px; }
+  .rail__copy { padding-top: 14px; }
+}
