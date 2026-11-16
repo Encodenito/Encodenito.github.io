@@ -31,6 +31,8 @@ export type Profile = {
   role: string
   /** Square image. An SVG, WebP or PNG with a transparent background looks best. */
   avatarSrc: string
+  /** Square transparent cut-out for the desktop sidebar (rail). */
+  railAvatarSrc: string
   /** Tooltip / screen-reader label on the verified tick next to your name. */
   verifiedLabel: string
   email: string
@@ -56,6 +58,7 @@ export const profile: Profile = {
   handle: '@Encodenito',
   role: 'BSIT Student · Web Developer · Freelance Programmer',
   avatarSrc: '/avatar.webp',
+  railAvatarSrc: '/avatar-rail.webp',
   verifiedLabel: 'BSIT student, Carlos Hilado Memorial State University',
   email: 'ralphcedricgelongo4@gmail.com',
   github: 'Encodenito',
@@ -71,7 +74,7 @@ export const profile: Profile = {
   // Keep it short: two halves, 5-8 words total.
   displayName: { line1: 'I build practical', line2: 'web apps.' },
   hero: {
-    body: 'Fourth-year BSIT student focused on web development, database systems and AI-assisted applications, from attendance monitoring and ordering platforms to learning systems and accessibility tools.',
+    body: 'Fourth-year BSIT student building web apps, databases and AI-assisted tools for schools and small businesses.',
     portraitSrc: '/avatar.webp',
     portraitAlt: 'Portrait of Ralph Cedric Gelongo',
   },

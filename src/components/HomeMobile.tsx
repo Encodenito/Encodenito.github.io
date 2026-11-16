@@ -51,7 +51,7 @@ export function HomeStats() {
 const TILES = [
   { n: '01', label: 'Projects', to: '/projects', title: 'Systems for schools and small businesses', desc: 'Attendance, ordering, inventory, learning and accessibility projects.', Icon: FolderOpen },
   { n: '02', label: 'Services', to: '/services', title: 'Web development and programming help', desc: 'Websites, debugging, database support and tutoring.', Icon: Stack },
-  { n: '03', label: 'About', to: '/about', title: `Hi, I'm ${profile.firstName}.`, desc: 'Fourth-year BSIT student at CHMSU Binalbagan.', img: profile.avatarSrc },
+  { n: '03', label: 'About', to: '/about', title: `Hi, I'm ${profile.firstName}.`, desc: 'Fourth-year BSIT student at CHMSU Binalbagan.', img: profile.avatarSrc, portrait: true },
   { n: '04', label: 'Contact', to: '/contact', title: "Let's discuss your project.", desc: 'A website idea, a system to improve, or code to understand.', Icon: ChatCircleText, accent: true },
 ] as const
 
@@ -66,7 +66,7 @@ export function HomeExplore() {
           <li key={t.to}>
             <Link to={t.to} className={`htile${'accent' in t && t.accent ? ' htile--accent' : ''}`}>
               {'img' in t ? (
-                <span className="htile__media"><img className="htile__img" src={t.img} alt="" loading="lazy" /></span>
+                <span className="htile__media"><img className={`htile__img${'portrait' in t ? ' htile__img--portrait' : ''}`} src={t.img} alt="" loading="lazy" /></span>
               ) : (
                 <span className="htile__media htile__glyph"><t.Icon size={52} weight="duotone" aria-hidden="true" /></span>
               )}

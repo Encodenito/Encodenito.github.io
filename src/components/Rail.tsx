@@ -43,7 +43,7 @@ export default function Rail() {
       <div className="rail__inner">
         <span className="rail__avatar">
           <img
-            src={profile.avatarSrc}
+            src={profile.railAvatarSrc}
             alt={profile.name}
             width={120}
             height={120}

@@ -405,6 +405,8 @@
     pointer-events: none;
   }
   .htile__img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: top; }
+  /* A transparent cut-out: show the whole head and shoulders, seated on the tile's floor. */
+  .htile__img--portrait { object-fit: contain; object-position: bottom center; }
   .htile__glyph {
     display: grid;
     place-items: center;

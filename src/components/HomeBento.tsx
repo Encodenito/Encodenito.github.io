@@ -14,6 +14,7 @@ import {
   ChalkboardTeacher,
   FileText,
   SealCheck,
+  Eye,
 } from '@/components/slab'
 import { aiStack, type StackNode } from '@/data/ai-stack'
 import { portfolioProjects } from '@/data/projects'
@@ -138,7 +139,7 @@ export default function HomeBento() {
         <CardHead Icon={GraduationCap} title="Education" desc="CHMSU - Binalbagan Campus." />
         <div className="bento__media bento__badge" aria-hidden="true">
           <span className="bento__badge-ring">
-            <GraduationCap size={44} weight="duotone" />
+            <img className="bento__seal" src="/chmsu-seal.webp" alt="" width={96} height={96} />
           </span>
           <span className="bento__badge-tag">
             <SealCheck size={14} weight="fill" />
@@ -173,8 +174,13 @@ export default function HomeBento() {
         <CardHead Icon={Lightbulb} title="Interests" desc="Where I want to take my work next." />
         {visits && (
           <span className="bento__visits">
-            <b>{visits}</b>
-            <span>portfolio visits</span>
+            <span className="bento__visits-top">
+              <Eye size={14} weight="bold" />
+              <i className="bento__visits-dot" />
+              Live
+            </span>
+            <b className="bento__visits-num">{visits}</b>
+            <span className="bento__visits-label">portfolio visits</span>
           </span>
         )}
         <div className="bento__media bento__reviews" aria-hidden="true">

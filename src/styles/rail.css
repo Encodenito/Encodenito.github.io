@@ -256,7 +256,7 @@
     line-height: 1.7;
     color: var(--muted);
     /* left-aligned past the accessibility button that sits in this corner */
-    padding-left: 52px;
+    padding-left: 64px;
     text-align: left;
   }
 

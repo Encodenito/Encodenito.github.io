@@ -1,4 +1,4 @@
-import { DownloadSimple, MapPin, GraduationCap } from '@/components/slab'
+import { DownloadSimple, MapPin } from '@/components/slab'
 import { profile } from '@/data/profile'
 import GitHubGraph from './GitHubGraph'
 
@@ -43,8 +43,8 @@ export default function AboutGrid() {
           {/* One plate, two cells sharing a mark / title / meta anatomy. */}
           <div className="agrid__bar">
             <span className="agrid__cell">
-              <span className="agrid__cell-mark">
-                <GraduationCap size={16} weight="fill" aria-hidden="true" />
+              <span className="agrid__cell-mark agrid__cell-mark--plain">
+                <img className="agrid__seal" src="/chmsu-seal.webp" alt="CHMSU seal" loading="lazy" decoding="async" />
               </span>
               <span className="agrid__cell-copy">
                 <span className="agrid__cell-title">BS Information Technology</span>

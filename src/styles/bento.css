@@ -361,9 +361,27 @@
 .bento__card--quotes .bento__media { margin-top: 0; grid-row: 1; grid-column: 2; }
 /* Visit count: pinned to the bottom of the left column, under the head. */
 .bento__card--quotes .bento__head { grid-row: 1; grid-column: 1; }
-.bento__visits { grid-row: 1; grid-column: 1; align-self: end; display: flex; flex-direction: column; gap: 2px; }
-.bento__visits b { font-size: clamp(26px, 2.2vw, 40px); font-weight: 700; letter-spacing: -0.02em; line-height: 1; color: var(--navy); font-variant-numeric: tabular-nums; }
-.bento__visits span { font-size: 12px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--orange-ink); }
+.bento__visits {
+  grid-row: 1;
+  grid-column: 1;
+  align-self: end;
+  justify-self: start;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  padding: clamp(8px, 1.2vh, 12px) clamp(12px, 1vw, 16px);
+  border-radius: 16px;
+  background: color-mix(in srgb, var(--orange) 10%, transparent);
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--orange) 30%, transparent), 0 12px 28px -18px var(--orange);
+}
+.bento__visits-top { display: inline-flex; align-items: center; gap: 6px; font-size: 10.5px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--orange-ink); }
+.bento__visits-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--orange); box-shadow: 0 0 0 0 var(--orange); animation: visits-pulse 2s var(--ease-out) infinite; }
+.bento__visits-num { font-size: clamp(30px, 2.6vw, 46px); font-weight: 800; letter-spacing: -0.03em; line-height: 1; color: var(--orange-ink); font-variant-numeric: tabular-nums; }
+.bento__visits-label { font-size: 11.5px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
+@keyframes visits-pulse {
+  0% { box-shadow: 0 0 0 0 color-mix(in srgb, var(--orange) 60%, transparent); }
+  70%, 100% { box-shadow: 0 0 0 7px transparent; }
+}
 .bento__reviews {
   overflow: hidden;
   mask-image: linear-gradient(to bottom, transparent, #000 12%, #000 88%, transparent);
@@ -432,3 +450,29 @@
   .bento__badge-tag, .bento__review-work { font-size: 12px; }
   .bento__review-role { font-size: 12.5px; }
 }
+
+/* ---------- Short viewports ----------
+   Home never scrolls, so on a short screen (a 1080p laptop at 125% scaling
+   is ~730px tall) the media has less height than its fixed sizes assumed and
+   the photo and badge rode up over the card text. Size them from the height
+   the media actually has instead. */
+.bento__fan, .bento__badge { container-type: size; }
+.bento__card--about .bento__photo { width: auto; height: min(92cqh, 132px); }
+.bento__badge-ring { width: clamp(48px, min(6.4vw, 58cqh), 104px); height: clamp(48px, min(6.4vw, 58cqh), 104px); }
+.bento__badge-ring svg { width: 46%; height: 46%; }
+/* Five rows under ~150px read as a squeezed list; show four. */
+@container (max-height: 150px) {
+  .bento__offer:nth-child(n + 5) { display: none; }
+}
+/* Chip rows: two need ~72px. When a card's text leaves less than that, show
+   one row instead of clipping the second. Desktop only - on phones the media
+   height comes from its content, which size containment would collapse. */
+@media (min-width: 1100px) {
+  .bento__chips { container-type: size; }
+}
+@container (max-height: 71px) {
+  .bento__chip-row + .bento__chip-row { display: none; }
+}
+/* School seal: a full circle, so it fills the ring instead of sitting at the
+   66% icon size. */
+.bento__badge-ring img.bento__seal { width: 88%; height: 88%; }
