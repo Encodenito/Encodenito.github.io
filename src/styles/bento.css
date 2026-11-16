@@ -359,6 +359,11 @@
 /* Testimonials: head left, review column drifting up on the right. */
 .bento__card--quotes { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.25fr); column-gap: 14px; }
 .bento__card--quotes .bento__media { margin-top: 0; grid-row: 1; grid-column: 2; }
+/* Visit count: pinned to the bottom of the left column, under the head. */
+.bento__card--quotes .bento__head { grid-row: 1; grid-column: 1; }
+.bento__visits { grid-row: 1; grid-column: 1; align-self: end; display: flex; flex-direction: column; gap: 2px; }
+.bento__visits b { font-size: clamp(26px, 2.2vw, 40px); font-weight: 700; letter-spacing: -0.02em; line-height: 1; color: var(--navy); font-variant-numeric: tabular-nums; }
+.bento__visits span { font-size: 12px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--orange-ink); }
 .bento__reviews {
   overflow: hidden;
   mask-image: linear-gradient(to bottom, transparent, #000 12%, #000 88%, transparent);

@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { ArrowUpRight } from '@/components/slab'
+import { ArrowUpRight, DownloadSimple } from '@/components/slab'
 import { profile } from '@/data/profile'
 import ToolsMarquee from './ToolsMarquee'
 import HomeBento from './HomeBento'
@@ -45,10 +45,16 @@ export default function Home() {
           </h1>
 
           {!phone && (
-            <Link className="home__cta" to="/contact">
-              Get in touch
-              <ArrowUpRight size={16} weight="bold" aria-hidden="true" />
-            </Link>
+            <div className="home__ctas">
+              <a className="home__cta home__cta--ghost" href={profile.cvSrc} download>
+                Download CV
+                <DownloadSimple size={16} weight="bold" aria-hidden="true" />
+              </a>
+              <Link className="home__cta" to="/contact">
+                Get in touch
+                <ArrowUpRight size={16} weight="bold" aria-hidden="true" />
+              </Link>
+            </div>
           )}
         </div>
 

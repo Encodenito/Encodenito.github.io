@@ -552,3 +552,14 @@
   .bento__kicker { font-size: 10.5px; }
   .bento__build-desc { font-size: 12px; }
 }
+
+/* ---------- Project detail window ---------- */
+.pdetail__summary { font-size: 14px; line-height: 1.55; color: rgba(237, 240, 246, 0.82); max-width: 60ch; }
+.aig__harness-item.pdetail__tech { padding: 0 12px; }
+.pdetail__links { display: flex; flex-wrap: wrap; gap: 10px; }
+.pdetail__link { border: 1px solid var(--line-strong); text-decoration: none; }
+.pdetail__link:hover { border-color: var(--orange); }
+.aig__status[data-status='Completed'] { background: rgba(34, 161, 92, 0.12); color: #1B8A4C; }
+.aig__status[data-status='In development'],
+.aig__status[data-status='Prototype'] { background: rgba(255, 122, 26, 0.14); color: var(--orange-ink); }
+[data-theme='dark'] .aig__status[data-status='Completed'] { color: #3DBA74; }

@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
-import { SealCheck, CaretRight, Play, Stack, Coffee } from '@/components/slab'
+import { SealCheck, Stack, FolderOpen, ChatCircleText } from '@/components/slab'
 import { profile } from '@/data/profile'
+import { useVisits } from '@/lib/visits'
 import QuickMenu from './QuickMenu'
 
 /**
@@ -10,11 +11,11 @@ import QuickMenu from './QuickMenu'
  *                (theme + accessibility) - the rail's identity block, laid flat
  *   HomeStats    three proof facts (profile.stats), each named by a glyph so
  *                it reads at a glance
- *   HomeExplore  one shelf card per rail view in a snap row, then the first
- *                testimonial as a video stage
+ *   HomeExplore  one shelf card per rail view in a snap row
  */
 
 export function HomeProfile() {
+  const visits = useVisits()
   return (
     <header className="hprofile">
       <img className="hprofile__avatar" src={profile.avatarSrc} alt="" width={56} height={56} />
@@ -25,6 +26,7 @@ export function HomeProfile() {
         </span>
         <span className="hprofile__handle">
           {profile.handle} · {profile.role}
+          {visits && ` · ${visits} visits`}
         </span>
       </div>
       <QuickMenu className="hprofile__menu" />
@@ -47,11 +49,10 @@ export function HomeStats() {
 }
 
 const TILES = [
-  { n: '01', label: 'Projects', to: '/projects', title: 'PLACEHOLDER - projects headline', desc: 'Tell me what to put here.', img: '/placeholders/project-1.jpg' },
-  { n: '02', label: 'Services', to: '/services', title: 'PLACEHOLDER - services headline', desc: 'Tell me what to put here.', Icon: Stack },
-  { n: '03', label: 'Showcase', to: '/showcase', title: 'PLACEHOLDER - your flagship', desc: 'Tell me what to put here.', Icon: Coffee, accent: true },
-  { n: '04', label: 'Testimonials', to: '/testimonials', title: 'PLACEHOLDER - testimonials headline', desc: 'Tell me what to put here.', img: '/placeholders/testimonial-1.jpg' },
-  { n: '05', label: 'About', to: '/about', title: `Hi, I'm ${profile.firstName}.`, desc: 'PLACEHOLDER - one line about you.', img: profile.avatarSrc },
+  { n: '01', label: 'Projects', to: '/projects', title: 'Systems for schools and small businesses', desc: 'Attendance, ordering, inventory, learning and accessibility projects.', Icon: FolderOpen },
+  { n: '02', label: 'Services', to: '/services', title: 'Web development and programming help', desc: 'Websites, debugging, database support and tutoring.', Icon: Stack },
+  { n: '03', label: 'About', to: '/about', title: `Hi, I'm ${profile.firstName}.`, desc: 'Fourth-year BSIT student at CHMSU Binalbagan.', img: profile.avatarSrc },
+  { n: '04', label: 'Contact', to: '/contact', title: "Let's discuss your project.", desc: 'A website idea, a system to improve, or code to understand.', Icon: ChatCircleText, accent: true },
 ] as const
 
 export function HomeExplore() {
@@ -78,27 +79,6 @@ export function HomeExplore() {
           </li>
         ))}
       </ul>
-
-      {/* A header that links carries its chevron on the title itself. */}
-      <div className="hsec">
-        <h2 className="hsec__title">
-          <Link to="/testimonials" className="hsec__link">
-            What clients say
-            <CaretRight size={16} weight="bold" aria-hidden="true" />
-          </Link>
-        </h2>
-      </div>
-      <Link to="/testimonials" className="hproof" aria-label="Client testimonial. PLACEHOLDER - a one-line teaser for your best testimonial.">
-        <span className="hproof__stage">
-          <img src="/placeholders/testimonial-1.jpg" alt="" loading="lazy" />
-          <span className="hproof__play" aria-hidden="true"><Play size={20} weight="fill" /></span>
-          <span className="hproof__dur" aria-hidden="true">0:00</span>
-        </span>
-        <span className="hproof__copy">
-          <span className="hproof__title">PLACEHOLDER - tell me what to put here: a one-line teaser for your best testimonial.</span>
-          <span className="hproof__meta">PLACEHOLDER - client role</span>
-        </span>
-      </Link>
     </>
   )
 }

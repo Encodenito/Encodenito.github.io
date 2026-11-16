@@ -23,7 +23,11 @@
 .agrid__copy {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  /* safe: when the copy is taller than the sheet it starts at the top and
+     scrolls inside the column instead of spilling above the glass. */
+  justify-content: safe center;
+  overflow-y: auto;
+  scrollbar-width: thin;
   gap: clamp(10px, 1.5vh, 20px);
   min-height: 0;
   min-width: 0;
@@ -64,81 +68,29 @@
 .agrid__link:hover { color: var(--orange-ink); box-shadow: inset 0 -2px 0 var(--orange); }
 .agrid__link:focus-visible { outline: 2px solid var(--orange); outline-offset: 3px; }
 
-/* ---------- The capability ladder ----------
-   Four rows, each led by the real marks of what that work is built with. The
-   tools ARE the credential here, so they take the left edge and the label
-   follows them; a row of word chips said the same thing with nothing to look
-   at. Hairlines between rows, no card per row - four framed boxes stacked in
-   a pinned sheet reads as clutter. */
-.agrid__caps {
-  display: flex;
-  flex-direction: column;
-  margin: clamp(2px, 0.6vh, 8px) 0 0;
-  padding-left: 0;
-  list-style: none;
-  flex: 0 0 auto;
-}
-.agrid__cap {
-  /* One tile size drives the stack and the column reserved for it. The
-     column is sized for the widest stack (five marks) so every label starts
-     on the same x whether its row carries three logos or five. */
-  --tile: clamp(28px, 2.2vw, 36px);
-  --overlap: 5px;
-  display: grid;
-  grid-template-columns: calc(5 * var(--tile) - 4 * var(--overlap) + var(--overlap)) minmax(0, 1fr) auto;
-  align-items: center;
-  gap: clamp(10px, 1vw, 16px);
-  padding: clamp(7px, 1.1vh, 13px) 2px;
-  border-top: 1px solid var(--line);
-}
-.agrid__cap:last-child { border-bottom: 1px solid var(--line); }
-
-/* The marks overlap like a stack of cards. The overlap is a static margin -
-   only the lift is animated, and only on transform, so the row never reflows
-   while it plays. */
-.agrid__cap-marks { display: inline-flex; align-items: center; padding-left: var(--overlap); }
-.agrid__mark {
-  display: grid;
-  place-items: center;
-  width: var(--tile);
-  height: var(--tile);
-  margin-left: calc(-1 * var(--overlap));
-  border-radius: 9px;
-  background: var(--white);
-  box-shadow:
-    inset 0 0 0 1px var(--line-strong),
-    0 2px 6px -3px rgba(6, 12, 26, 0.35);
-  /* Descending, so later marks sit UNDER earlier ones and the stack reads
-     left to right the way the eye scans it. */
-  z-index: var(--i);
-  transition: transform 260ms var(--ease-spring);
-}
-.agrid__mark img {
-  width: 58%;
-  height: 58%;
-  object-fit: contain;
-}
-.agrid__cap:hover .agrid__mark { transform: translateY(-3px); }
-.agrid__cap:hover .agrid__mark:nth-child(2) { transition-delay: 40ms; }
-.agrid__cap:hover .agrid__mark:nth-child(3) { transition-delay: 80ms; }
-.agrid__cap:hover .agrid__mark:nth-child(4) { transition-delay: 120ms; }
-.agrid__cap:hover .agrid__mark:nth-child(5) { transition-delay: 160ms; }
-
-.agrid__cap-title {
-  font-size: clamp(13px, min(1vw, 1.85vh), 17px);
-  font-weight: 700;
-  letter-spacing: -0.012em;
-  line-height: 1.25;
-  color: var(--navy);
-}
-.agrid__cap-index {
-  font-size: clamp(10.5px, 0.68vw, 12px);
-  font-weight: 700;
-  letter-spacing: 0.12em;
-  color: var(--line-strong);
-  transition: color 220ms var(--ease-out);
-}
-.agrid__cap:hover .agrid__cap-index { color: var(--orange); }
+/* ---------- GitHub activity ----------
+   The live contribution calendar: 53 week columns, 7 day rows, cells sized by
+   the column width. Levels use the accent so it reads as this site's graph,
+   not a pasted GitHub widget. */
+.ghg { display: flex; flex-direction: column; gap: 8px; flex: 0 0 auto; padding: clamp(10px, 1.4vh, 16px) 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.ghg__head { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.ghg__title { display: inline-flex; align-items: center; gap: 7px; font-size: 13px; font-weight: 700; color: var(--navy); }
+.ghg__link { display: inline-flex; align-items: center; gap: 3px; font-size: 12px; font-weight: 600; color: var(--orange-ink); text-decoration: none; }
+.ghg__link:hover { text-decoration: underline; }
+.ghg__link:focus-visible { outline: 2px solid var(--orange); outline-offset: 3px; border-radius: 4px; }
+/* 8px floor: below it the cells stop reading, so the grid scrolls instead. */
+.ghg__grid { display: grid; grid-auto-flow: column; grid-template-rows: repeat(7, auto); grid-auto-columns: minmax(8px, 1fr); gap: 2px; overflow-x: auto; scrollbar-width: none; }
+.ghg__grid::-webkit-scrollbar { display: none; }
+.ghg__grid i, .ghg__legend i { display: block; aspect-ratio: 1; border-radius: 2px; background: var(--line); }
+.ghg i[data-level='pad'] { background: transparent; }
+.ghg i[data-level='1'] { background: rgba(255, 122, 26, 0.3); }
+.ghg i[data-level='2'] { background: rgba(255, 122, 26, 0.55); }
+.ghg i[data-level='3'] { background: rgba(255, 122, 26, 0.8); }
+.ghg i[data-level='4'] { background: var(--orange); }
+.ghg__legend { display: flex; align-items: center; justify-content: flex-end; gap: 3px; font-size: 11px; color: var(--muted); }
+.ghg__legend i { width: 10px; }
+.ghg__legend i:first-child { margin-left: 3px; }
+.ghg__legend i:last-child { margin-right: 3px; }
 
 /* ---------- The credential bar ----------
    Loose pills read as separate components fighting for the same line. This
@@ -224,15 +176,6 @@
   .agrid__cell-meta { font-size: 10px; }
 }
 
-/* Dark theme: the mark tiles stay a light plate on purpose. Brand marks are
-   drawn for light backgrounds and several of these are monochrome black, so
-   inverting the tile would erase them. */
-[data-theme='dark'] .agrid__mark {
-  background: #F4F4ED;
-  box-shadow:
-    inset 0 0 0 1px rgba(255, 255, 255, 0.14),
-    0 2px 6px -3px rgba(0, 0, 0, 0.6);
-}
 
 /* ---------- Right: the illustration ----------
    Bottom-aligned so the art sits on the floor of the sheet rather than floating in
@@ -272,16 +215,7 @@
   .agrid__bar { grid-template-columns: minmax(0, 1fr); }
   .agrid__cell + .agrid__cell { box-shadow: inset 0 1px 0 var(--line); }
 }
-@media (max-width: 560px) {
-  /* The index has no room to earn its column at this width. */
-  .agrid__cap { grid-template-columns: calc(5 * var(--tile) - 4 * var(--overlap) + var(--overlap)) minmax(0, 1fr); }
-  .agrid__cap-index { display: none; }
-}
 
-@media (prefers-reduced-motion: reduce) {
-  .agrid__mark,
-  .agrid__cap:hover .agrid__mark { transform: none; transition: none; }
-}
 
 /* Phone type floor. */
 @media (max-width: 639px) {

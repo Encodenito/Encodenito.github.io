@@ -1,20 +1,13 @@
 import type { CSSProperties } from 'react'
-import { MagnetStraight, Timer, Trophy, CheckCircle } from '@/components/slab'
+import { ChatsCircle, Code, RocketLaunch, CheckCircle } from '@/components/slab'
 import type { Icon } from '@/components/slab'
-import Autopilot, { TOOLS } from '@/components/Autopilot'
 
 /**
  * ServicesGrid - the Services view on one glass sheet.
  *
- * Three bands, top to bottom: your three-step method (on a dark plate so it
- * is the first thing the eye lands on), the five services as cards that carry
- * the marks of what each one is built with, and the live automation demo
- * scaled into whatever height is left. Same object language as Home and
- * Projects: the glass, the bento card, plated marks, orange for the index
- * and the accent.
- *
- * Every string below is a PLACEHOLDER. Replace it, or hand this file to your
- * AI assistant and tell it what to put in each spot.
+ * Two bands, top to bottom: the three-step way of working (on a dark plate so
+ * it is the first thing the eye lands on), then the six services as cards
+ * that carry the marks of what each one is built with.
  */
 
 /* ---------- The method ---------- */
@@ -30,42 +23,41 @@ type Stage = {
 const STAGES: Stage[] = [
   {
     index: '01',
-    label: 'Step 1',
-    body: 'PLACEHOLDER - one line on what happens in this step.',
-    Icon: MagnetStraight,
-    chips: ['Tag 1', 'Tag 2', 'Tag 3', 'Tag 4'],
+    label: 'Discuss',
+    body: 'We talk through what you need, who will use it and what already exists.',
+    Icon: ChatsCircle,
+    chips: ['Requirements', 'Scope', 'Timeline'],
   },
   {
     index: '02',
-    label: 'Step 2',
-    body: 'PLACEHOLDER - one line on what happens in this step.',
-    Icon: Timer,
-    chips: ['Tag 1', 'Tag 2', 'Tag 3'],
+    label: 'Build',
+    body: 'I build or fix it in small steps and show progress along the way.',
+    Icon: Code,
+    chips: ['Code', 'Database', 'Testing'],
   },
   {
     index: '03',
-    label: 'Step 3',
-    body: 'PLACEHOLDER - one line on the result the client gets.',
-    Icon: Trophy,
-    chips: ['Tag 1', 'Tag 2', 'Tag 3'],
+    label: 'Deliver',
+    body: 'You get working software and an explanation you can follow.',
+    Icon: RocketLaunch,
+    chips: ['Handover', 'Walkthrough', 'Support'],
   },
 ]
 
 /* ---------- The services ---------- */
 
-// Example tool marks from /public/icons. Swap for the tools you actually use.
-const GHL = '/icons/gohighlevel.png'
+const PHP = '/icons/tech/php.svg'
+const LARAVEL = '/icons/tech/laravel.svg'
 const REACT = '/icons/ai/react.svg'
 const TAILWIND = '/icons/ai/tailwindcss.svg'
-const VITE = '/icons/ai/vite.svg'
-const CLOUDFLARE = '/icons/ai/cloudflare.svg'
-const N8N = '/icons/ai/n8n.svg'
-const OPENAI = '/icons/openai.svg'
-const GWS = '/icons/googleworkspace.svg'
-const SLACK = '/icons/slack.svg'
-const CLAUDE_CODE = '/icons/claude-code-logo.png'
-const EXPO = '/icons/ai/expo.svg'
-const CHROME = '/icons/ai/googlechrome.svg'
+const JS = '/icons/tech/javascript.svg'
+const PYTHON = '/icons/tech/python.svg'
+const MYSQL = '/icons/tech/mysql.svg'
+const MARIADB = '/icons/tech/mariadb.svg'
+const GITHUB = '/icons/ai/github.svg'
+const VSCODE = '/icons/vscode.svg'
+const FIGMA = '/icons/tech/figma.svg'
+const CANVA = '/icons/tech/canva.svg'
 
 type Service = {
   index: string
@@ -76,49 +68,54 @@ type Service = {
   bullets: string[]
 }
 
-const BULLETS = ['PLACEHOLDER benefit 1', 'PLACEHOLDER benefit 2', 'PLACEHOLDER benefit 3']
-const SERVICE_DESC = 'PLACEHOLDER - one line on this service.'
-
 const SERVICES: Service[] = [
   {
     index: '01',
-    title: 'Service One',
-    description: SERVICE_DESC,
-    chip: 'PLACEHOLDER',
-    logos: [GHL, REACT, TAILWIND],
-    bullets: BULLETS,
+    title: 'Web development',
+    description: 'Responsive websites and web applications for small businesses, student organizations and individual clients.',
+    chip: 'Websites · Web apps',
+    logos: [PHP, LARAVEL, REACT],
+    bullets: ['Responsive on phone and desktop', 'Built with PHP, Laravel or React', 'Ready for your own content'],
   },
   {
     index: '02',
-    title: 'Service Two',
-    description: SERVICE_DESC,
-    chip: 'PLACEHOLDER',
-    logos: [GHL, N8N, OPENAI],
-    bullets: BULLETS,
+    title: 'Programming and debugging',
+    description: 'Help finding errors, improving existing code and understanding how an application behaves.',
+    chip: 'Fixes · Code review',
+    logos: [JS, PHP, PYTHON],
+    bullets: ['Find the cause, not only the symptom', 'Cleaner, easier-to-read code', 'Explanations you can follow'],
   },
   {
     index: '03',
-    title: 'Service Three',
-    description: SERVICE_DESC,
-    chip: 'PLACEHOLDER',
-    logos: [GHL, GWS, SLACK],
-    bullets: BULLETS,
+    title: 'Database design and support',
+    description: 'Help with database structures, relationships, SQL queries and database integration.',
+    chip: 'Schema · SQL',
+    logos: [MYSQL, MARIADB],
+    bullets: ['Tables and relationships', 'SQL queries and fixes', 'Connecting the app to the database'],
   },
   {
     index: '04',
-    title: 'Service Four',
-    description: SERVICE_DESC,
-    chip: 'PLACEHOLDER',
-    logos: [REACT, VITE, CLOUDFLARE],
-    bullets: BULLETS,
+    title: 'System features and integration',
+    description: 'Authentication, dashboards, QR codes, reporting, inventory, reservations and ordering workflows.',
+    chip: 'Features · Workflows',
+    logos: [LARAVEL, MYSQL, TAILWIND],
+    bullets: ['Login and user roles', 'Dashboards and reports', 'QR codes, inventory and ordering'],
   },
   {
     index: '05',
-    title: 'Service Five',
-    description: SERVICE_DESC,
-    chip: 'PLACEHOLDER',
-    logos: [CLAUDE_CODE, EXPO, CHROME],
-    bullets: BULLETS,
+    title: 'Programming tutoring',
+    description: 'Guided explanations and practical support that help learners understand their code and build their own solutions.',
+    chip: 'One-on-one',
+    logos: [VSCODE, GITHUB, PYTHON],
+    bullets: ['Step-by-step explanations', 'Practice on your own code', 'Learn to solve it yourself'],
+  },
+  {
+    index: '06',
+    title: 'Research and document support',
+    description: 'Document formatting, technical documentation, research guidance and presentation preparation.',
+    chip: 'Docs · Presentations',
+    logos: [FIGMA, CANVA],
+    bullets: ['Formatting and structure', 'Technical documentation', 'Presentation preparation'],
   },
 ]
 
@@ -143,10 +140,10 @@ export default function ServicesGrid() {
       <header className="pgrid__head">
         <span className="pgrid__eyebrow">Services</span>
         <h1 className="pgrid__title" id="services-title">
-          Your services headline, in one short line.
+          Websites, fixes and programming help.
         </h1>
         <p className="pgrid__lede">
-          PLACEHOLDER - tell me what to put here: one line on what you offer.
+          Web development, debugging, database support, tutoring and document support for small businesses, organizations and students.
         </p>
       </header>
 
@@ -155,14 +152,14 @@ export default function ServicesGrid() {
             in order on the right with a signal running them. */}
         <div className="sgrid__method" aria-labelledby="method-title">
           <div className="sgrid__method-copy">
-            <span className="sgrid__method-eyebrow">Your Method</span>
+            <span className="sgrid__method-eyebrow">How I work</span>
             <h2 className="sgrid__method-title" id="method-title">
-              One. Two. Three.
+              Discuss. Build. Deliver.
               <br />
-              <span>Your method, in three steps.</span>
+              <span>Three steps, no surprises.</span>
             </h2>
             <p className="sgrid__method-sub">
-              PLACEHOLDER - one sentence on why your method works.
+              You always know what is being built and why.
             </p>
           </div>
 
@@ -188,11 +185,11 @@ export default function ServicesGrid() {
           </ol>
         </div>
 
-        {/* Five cards, each carrying the marks of what it is built with. */}
+        {/* Six cards, each carrying the marks of what it is built with. */}
         <div className="sgrid__offers">
           <div className="sgrid__offers-head">
-            <h2 className="sgrid__offers-title">Your services, listed.</h2>
-            <p className="sgrid__offers-sub">PLACEHOLDER - one short nudge.</p>
+            <h2 className="sgrid__offers-title">What I can help with.</h2>
+            <p className="sgrid__offers-sub">Not sure which one fits? Send a message and describe the problem.</p>
           </div>
           <ul className="bento sgrid__services" role="list">
             {SERVICES.map((s) => (
@@ -200,7 +197,7 @@ export default function ServicesGrid() {
                 <span className="bento__head">
                   <span className="sgrid__service-top">
                     <Marks logos={s.logos} />
-                    <span className="sgrid__service-index" aria-hidden="true">{s.index} / 05</span>
+                    <span className="sgrid__service-index" aria-hidden="true">{s.index} / {String(SERVICES.length).padStart(2, '0')}</span>
                   </span>
                   <span className="bento__title">{s.title}</span>
                   <span className="bento__desc">{s.description}</span>
@@ -219,30 +216,6 @@ export default function ServicesGrid() {
           </ul>
         </div>
 
-        {/* The live workflow. Its caption and the tool chips sit in a header
-            above the window, so the canvas gets the whole glass width. */}
-        <div className="sgrid__flow">
-          <header className="sgrid__flow-head">
-            <div className="sgrid__flow-copy">
-              <span className="sgrid__flow-eyebrow">Live automation</span>
-              <h2 className="sgrid__flow-title">Your automation headline.</h2>
-              <p className="sgrid__flow-sub">
-                PLACEHOLDER - tell me what to put here: one sentence on what this example automation does for a client.
-              </p>
-            </div>
-            <ul className="sgrid__flow-tools" role="list" aria-label="Tools that power this flow">
-              {TOOLS.map(({ Icon: ToolIcon, label }) => (
-                <li key={label} className="sgrid__flow-tool">
-                  <ToolIcon size={14} weight="duotone" aria-hidden="true" />
-                  <span>{label}</span>
-                </li>
-              ))}
-            </ul>
-          </header>
-          <div className="sgrid__flow-main">
-            <Autopilot compact maxScale={1.08} />
-          </div>
-        </div>
       </div>
     </section>
   )

@@ -2,15 +2,16 @@
  * YOUR IDENTITY - start here.
  *
  * Everything that says who you are lives in this file: name, handle, photo,
- * socials, email and the Home headline. Every value below is a PLACEHOLDER.
- * Replace the text, or hand this file to your AI assistant and tell it what
- * to put in each field.
+ * socials, email and the Home headline.
  *
- * Page-specific copy (projects, services, testimonials, FAQs) lives in the
- * other files in src/data/ and at the top of each view component.
+ * Values in [square brackets] are still placeholders - replace them once
+ * confirmed (location, CV).
+ *
+ * Page-specific copy (projects, services, FAQs) lives in the other files in
+ * src/data/ and at the top of each view component.
  */
 
-import { Briefcase, SealCheck, Clock, type Icon } from '@/components/slab'
+import { GraduationCap, FolderOpen, Clock, type Icon } from '@/components/slab'
 
 export type SocialLink = {
   label: string
@@ -33,7 +34,11 @@ export type Profile = {
   /** Tooltip / screen-reader label on the verified tick next to your name. */
   verifiedLabel: string
   email: string
+  /** GitHub username: the About page contribution graph and the GitHub link. */
+  github: string
   location: string
+  /** Public path of the CV PDF (drop the file in public/). */
+  cvSrc: string
   /** Three short proof facts shown on phones under the Home lede. */
   stats: Stat[]
   displayName: { line1: string; line2: string }
@@ -46,31 +51,33 @@ export type Profile = {
 }
 
 export const profile: Profile = {
-  name: 'Your Name',
-  firstName: 'Your Name',
-  handle: '@yourhandle',
-  role: 'PLACEHOLDER - your title',
-  avatarSrc: '/avatar.svg',
-  verifiedLabel: 'PLACEHOLDER - what the tick means (e.g. a certification)',
-  email: 'you@example.com',
-  location: 'PLACEHOLDER - your city or timezone',
+  name: 'Ralph Cedric Gelongo',
+  firstName: 'Ralph',
+  handle: '@Encodenito',
+  role: 'BSIT Student · Web Developer · Freelance Programmer',
+  avatarSrc: '/avatar.webp',
+  verifiedLabel: 'BSIT student, Carlos Hilado Memorial State University',
+  email: 'ralphcedricgelongo4@gmail.com',
+  github: 'Encodenito',
+  location: '[City, Province]',
+  cvSrc: '/cv.pdf',
   // Pick any icon from https://phosphoricons.com and import it above.
   stats: [
-    { value: '0 yrs', label: 'PLACEHOLDER', Icon: Briefcase },
-    { value: '#000', label: 'PLACEHOLDER', Icon: SealCheck },
-    { value: 'GMT+0', label: 'PLACEHOLDER', Icon: Clock },
+    { value: '4th yr', label: 'BSIT student', Icon: GraduationCap },
+    { value: '8', label: 'Projects', Icon: FolderOpen },
+    { value: 'GMT+8', label: 'Philippines', Icon: Clock },
   ],
   // The intro types this line, then flies it into the Home headline.
   // Keep it short: two halves, 5-8 words total.
-  displayName: { line1: 'Your headline here.', line2: 'Keep it short.' },
+  displayName: { line1: 'I build practical', line2: 'web apps.' },
   hero: {
-    body: 'PLACEHOLDER - one line on what you do and who you do it for.',
-    portraitSrc: '/avatar.svg',
-    portraitAlt: 'Portrait placeholder',
+    body: 'Fourth-year BSIT student focused on web development, database systems and AI-assisted applications, from attendance monitoring and ordering platforms to learning systems and accessibility tools.',
+    portraitSrc: '/avatar.webp',
+    portraitAlt: 'Portrait of Ralph Cedric Gelongo',
   },
   socials: [
-    { label: 'Facebook profile', href: '#', iconPath: '/icons/facebook.svg' },
-    { label: 'LinkedIn profile', href: '#', iconPath: '/icons/linkedin.svg' },
-    { label: 'Discord profile', href: '#', iconPath: '/icons/discord.svg' },
+    { label: 'GitHub profile', href: 'https://github.com/Encodenito', iconPath: '/icons/ai/github.svg' },
+    { label: 'Facebook profile', href: 'https://www.facebook.com/ralph.cedric.m.gelongo', iconPath: '/icons/facebook.svg' },
+    { label: 'LinkedIn profile', href: 'https://www.linkedin.com/in/ralph-cedric-gelongo-5ab007383', iconPath: '/icons/linkedin.svg' },
   ],
 }

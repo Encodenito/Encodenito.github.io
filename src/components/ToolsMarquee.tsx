@@ -4,7 +4,7 @@ import { useMemo } from 'react'
  * ToolsMarquee
  *
  * Horizontally scrolling strip of brand logos + labels for the tools you work with.
- * PLACEHOLDER - swap the list below for your own tools (icons live in public/icons/).
+ * Swap the list below for your own tools (icons live in public/icons/ and public/icons/tech/).
  * The strip lives on the cream shader page, NOT inside a dark section.
  *
  * Implementation notes:
@@ -37,18 +37,23 @@ type Tool = {
   color?: string
 }
 
-export const tools: Tool[] = [
-  { name: 'Claude Code',          iconPath: '/icons/claude-code-logo.png' },
-  { name: 'Codex',                iconPath: '/icons/codex.svg',           color: '#000000' },
-  { name: 'Cursor',               iconPath: '/icons/cursor.svg',          color: '#0F172A' },
-  { name: 'Hermes AI',            iconPath: '/icons/nousresearch.svg',    color: '#18181B' },
-  { name: 'VS Code',              iconPath: '/icons/vscode.svg' },
-  { name: 'GoHighLevel',          iconPath: '/icons/gohighlevel.png' },
-  { name: 'Lightspeed X-Series',  iconPath: '/icons/lightspeed.png' },
-  { name: 'Google Workspace',     iconPath: '/icons/googleworkspace.svg' },
-  { name: 'Zendesk',              iconPath: '/icons/zendesk.svg',         color: '#03363D' },
-  { name: 'Intercom',             iconPath: '/icons/intercom.svg',        color: '#1F8DED' },
-  { name: 'Slack',                iconPath: '/icons/slack.svg',           color: '#611F69' },
+const tools: Tool[] = [
+  { name: 'PHP',          iconPath: '/icons/tech/php.svg',          color: '#777BB4' },
+  { name: 'Laravel',      iconPath: '/icons/tech/laravel.svg',      color: '#FF2D20' },
+  { name: 'React',        iconPath: '/icons/ai/react.svg',          color: '#149ECA' },
+  { name: 'JavaScript',   iconPath: '/icons/tech/javascript.svg',   color: '#C9A800' },
+  { name: 'Python',       iconPath: '/icons/tech/python.svg',       color: '#3776AB' },
+  { name: 'MySQL',        iconPath: '/icons/tech/mysql.svg',        color: '#4479A1' },
+  { name: 'MariaDB',      iconPath: '/icons/tech/mariadb.svg',      color: '#003545' },
+  { name: 'Tailwind CSS', iconPath: '/icons/ai/tailwindcss.svg',    color: '#06B6D4' },
+  { name: 'jQuery',       iconPath: '/icons/tech/jquery.svg',       color: '#0769AD' },
+  { name: 'HTML',         iconPath: '/icons/tech/html5.svg',        color: '#E34F26' },
+  { name: 'CSS',          iconPath: '/icons/tech/css3.svg',         color: '#1572B6' },
+  { name: 'n8n',          iconPath: '/icons/ai/n8n.svg',            color: '#EA4B71' },
+  { name: 'GitHub',       iconPath: '/icons/ai/github.svg',         color: '#181717' },
+  { name: 'VS Code',      iconPath: '/icons/vscode.svg' },
+  { name: 'Figma',        iconPath: '/icons/tech/figma.svg',        color: '#F24E1E' },
+  { name: 'Canva',        iconPath: '/icons/tech/canva.svg',        color: '#00C4CC' },
 ]
 
 export default function ToolsMarquee() {

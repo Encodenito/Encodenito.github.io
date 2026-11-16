@@ -9,22 +9,22 @@ export type QA = { q: string; a: string }
 export const FAQS: QA[] = [
   {
     q: 'What do you do?',
-    a: 'PLACEHOLDER - tell me what to put here: the kinds of work you take on, and who it is usually for.',
+    a: 'I develop websites and web applications, fix programming errors, design databases, and provide coding tutorials and technical support.',
   },
   {
-    q: 'How fast can you start?',
-    a: 'PLACEHOLDER - tell me what to put here: your usual lead time for small fixes vs. larger projects, and your working hours.',
+    q: 'What technologies do you use?',
+    a: 'I work with PHP, Laravel, React, JavaScript, HTML, CSS, Tailwind CSS, Python, and MySQL.',
+  },
+  {
+    q: 'Can you help me understand my own code?',
+    a: 'Yes. I can explain your code step by step, help you find errors, and guide you through improvements.',
   },
   {
     q: 'How much do you charge?',
-    a: 'PLACEHOLDER - tell me what to put here: how you price (hourly, per project, retainer) and how a quote is put together.',
-  },
-  {
-    q: 'Where are you based?',
-    a: 'PLACEHOLDER - tell me what to put here: your location or timezone, and which client timezones you overlap with.',
+    a: 'Rates depend on the scope, complexity, and deadline. Send a short description of the work, and I will provide a quote.',
   },
   {
     q: 'What happens after I write?',
-    a: 'PLACEHOLDER - tell me what to put here: how fast you reply and what the next step looks like.',
+    a: 'I will review your request, clarify the requirements, and discuss the price and timeline with you before starting.',
   },
 ]
